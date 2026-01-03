@@ -4,27 +4,25 @@
   <meta charset="UTF-8">
   <title>Demented10 Official Contact</title>
   <style>
-    /* Reset and base styles */
+    /* Base dark background with CSS vignette overlay */
     body, html {
       margin: 0;
       padding: 0;
       height: 100%;
       font-family: Arial, sans-serif;
       color: #fff;
-      background: url('starrypix.png') center/cover no-repeat fixed;
+      text-align: center;
       position: relative;
       overflow-x: hidden;
-      text-align: center;
-    }
 
-    /* Vignette overlay */
-    body::after {
-      content: '';
-      position: absolute;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      background: url('vignet.png') center/cover no-repeat;
-      pointer-events: none;
+      /* Background image */
+      background: url('https://raw.githubusercontent.com/demented01/Contact-Page/main/starrypix.png') center/cover no-repeat fixed;
+
+      /* Vignette overlay via linear gradient */
+      background-image:
+        linear-gradient(to bottom, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0) 15%, rgba(0,0,0,0) 85%, rgba(0,0,0,0.7) 100%),
+        url('https://raw.githubusercontent.com/demented01/Contact-Page/main/starrypix.png');
+      background-blend-mode: overlay;
     }
 
     /* Header with profile */
@@ -58,7 +56,7 @@
       margin-left: 15px;
     }
 
-    /* Main message */
+    /* Main content */
     main {
       margin-top: 50px;
       position: relative;
@@ -72,7 +70,7 @@
       line-height: 1.5;
     }
 
-    /* Button */
+    /* Verification button */
     .button {
       display: inline-block;
       padding: 18px 35px;
@@ -106,7 +104,7 @@
     .animation-frame {
       width: 100%;
       max-width: 800px;
-      height: 200px; /* adjust as needed */
+      height: 200px; /* adjust if needed */
       border: none;
       margin: 40px auto;
       display: block;
@@ -125,16 +123,16 @@
 </head>
 <body>
   <header>
-    <img class="profile" src="aswintered.jpg" alt="Profile">
+    <img class="profile" src="https://raw.githubusercontent.com/demented01/Contact-Page/main/aswintered.jpg" alt="Profile">
     <h1>demented10</h1>
-    <img class="twitch-icon" src="chat wide big tranps style.png" alt="Twitch Chat">
+    <img class="twitch-icon" src="https://raw.githubusercontent.com/demented01/Contact-Page/main/chat%20wide%20big%20tranps%20style.png" alt="Twitch Chat">
   </header>
 
   <main>
     <p>Before accessing our contact information, please complete a quick human verification step.</p>
     <a class="button" href="YOUR_MONETIZED_SHORTLINK_HERE" target="_blank">Verify</a>
 
-    <iframe class="animation-frame" src="EnderEyesBlueSmooth2.html" scrolling="no"></iframe>
+    <iframe class="animation-frame" src="https://raw.githubusercontent.com/demented01/Contact-Page/main/EnderEyesBlueSmooth2.html" scrolling="no"></iframe>
 
     <p class="disclaimer">
       This verification may involve viewing a short ad or completing a captcha. Thank you for your patience!
