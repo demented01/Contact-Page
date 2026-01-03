@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>demented10 Contact Email</title>
+
+<style>
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  font-family: Arial, sans-serif;
+  color: #fff;
+  overflow-x: hidden;
+  background: #000 url('https://raw.githubusercontent.com/demented01/Contact-Page/main/starrypix.png') center center / cover no-repeat fixed;
+}
+
+/* ===== DYNAMIC TOP VIGNETTE ===== */
+.vignette-top {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 15vh; 
+  pointer-events: none;
+  z-index: 5;
+  background: linear-gradient(to bottom,
+    rgba(0,0,0,1) 0%,
+    rgba(0,0,0,0.5) 50%,
+    rgba(0,0,0,0.3) 70%,
+    rgba(0,0,0,0) 100%
+  );
+}
+
+/* ===== DYNAMIC BOTTOM VIGNETTE ===== */
+.vignette-bottom {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 40vh; 
+  pointer-events: none;
+  z-index: 20; 
+  background: linear-gradient(to top,
+    rgba(0,0,0,1) 0%,
+    rgba(0,0,0,0.9) 20%,
+    rgba(0,0,0,0.8) 40%,
+    rgba(0,0,0,0.6) 60%,
+    rgba(0,0,0,0.4) 80%,
+    rgba(0,0,0,0.2) 90%,
+    rgba(0,0,0,0) 100%
+  );
+}
+
+/* ===== MAIN BACKING ===== */
+.backing {
+  position: relative;
+  width: 90%;
+  max-width: 650px;
+  padding: 30px 25px;
+  background: rgba(0,0,0,0.68);
+  backdrop-filter: blur(6px);
+  border-radius: 22px;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.7);
+  z-index: 10;
+  margin: 60px auto;
+  text-align: center;
+}
+
+/* ===== HEADER ===== */
+header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+header img.profile {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  border: 2px solid #1987ee;
+  object-fit: cover;
+  object-position: 20% 25%;
+}
+
+/* ===== TWITCH CHAT ICON + LINK ===== */
+.chat-link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+  color: #1987ee; 
+  font-weight: bold;
+}
+
+.chat-link img.twitch-icon {
+  width: 120px;
+  border: none;
+  border-radius: 12px;
+  padding: 0;
+}
+
+/* ===== EMAIL DISPLAY ===== */
+.email-contact {
+  display: inline-block;
+  margin-bottom: 25px;
+  font-size: 1.25em;
+  font-weight: bold;
+  line-height: 1.4;
+  padding: 12px 18px;
+  border-radius: 10px;
+  user-select: all;
+  text-align: center;
+  background: rgba(0,0,0,0.3);
+}
+
+.email-contact .white {
+  color: #fff;
+}
+
+.email-contact .myblue {
+  color: #1987ee;
+}
+
+/* ===== TEXT ===== */
+.intro {
+  font-size: 1.1em;
+  line-height: 1.6;
+  text-align: left;
+  margin-top: 15px;
+}
+
+.intro p {
+  margin-top: 15px;
+  margin-bottom: 10px;
+}
+
+/* ===== EYES ANIMATION ===== */
+.eyes-container {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 200px;
+  z-index: 40;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  pointer-events: none;
+}
+
+.animation-frame {
+  width: 100%;
+  max-width: 900px;
+  height: 200px;
+  border: none;
+  background: transparent;
+  loading: lazy;
+}
+
+/* ===== MOBILE ===== */
+@media (max-width: 768px) {
+  .animation-frame {
+    height: 150px;
+  }
+
+  .backing {
+    max-width: 90%;
+    padding: 20px 15px;
+  }
+
+  .chat-link img.twitch-icon {
+    width: 80px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<!-- TOP VIGNETTE -->
+<div class="vignette-top"></div>
+
+<!-- MAIN BACKING -->
+<div class="backing">
+
+  <header>
+    <img class="profile"
+         src="https://raw.githubusercontent.com/demented01/Contact-Page/main/aswintered.jpg"
+         alt="Profile">
+
+    <h1>demented10</h1>
+
+    <a class="chat-link" href="https://www.twitch.tv/popout/demented10/chat" target="_blank">
+      <img class="twitch-icon"
+           src="https://raw.githubusercontent.com/demented01/Contact-Page/main/chat%20wide%20big%20tranps%20style.png"
+           alt="Twitch Chat">
+    </a>
+  </header>
+
+  <!-- Email at top -->
+  <div class="email-contact">
+    <span class="white">Verification complete.</span><br>
+    <a class="myblue" href="mailto:testemail@gmail.com">Email: testemail@gmail.com</a>
+  </div>
+
+  <!-- Instructions -->
+  <div class="intro">
+    <p>Make sure to clearly state your Twitch account name in the title of your email as well as the name of your service.</p>
+
+    <p>If you are an artist or your service includes art, you <strong>MUST attach examples of your authentic work</strong> (not AI-generated or stolen). You can also include free samples of your work tailored for my brand. Anything animated or other media such as sound should be given as a YouTube link.</p>
+
+    <p>Describe each attachment and explain how it is superior to what my brand currently uses. Overall, write a clear but very short description of your offer and how exactly it would benefit me. You can link your social media or other places where I could see your work.</p>
+  </div>
+
+</div>
+
+<!-- BOTTOM VIGNETTE -->
+<div class="vignette-bottom"></div>
+
+<!-- EYES ANIMATION FIXED ON TOP -->
+<div class="eyes-container">
+  <iframe class="animation-frame" src="EnderEyesBlueSmooth2.html" scrolling="no" loading="lazy"></iframe>
+</div>
+
+</body>
+</html>
