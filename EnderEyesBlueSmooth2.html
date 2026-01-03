@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+<body id="body" style="margin:0; display:flex; flex-direction:column; align-items:center; justify-content:flex-start; height:100vh; overflow:hidden; background:transparent; font-family:sans-serif">
+
+<script>
+// ====== SETTINGS ======
+const scale = 20;          
+const timescale = 1000;     
+const glideTime = 200;      
+const steps = 8;            
+
+// ====== BODY / CANVAS ======
+const body = document.getElementById("body");
+const canvas = document.createElement("canvas");
+canvas.width = 8 * scale;  
+canvas.height = 1 * scale; 
+canvas.style.imageRendering = "pixelated";
+canvas.style.position = "absolute"; 
+body.appendChild(canvas);
+const ctx = canvas.getContext("2d");
+ctx.imageSmoothingEnabled = false;
+
+// ====== COLORS ======
+const WHITE = "#ffffff";
+const BLUE  = "#1987ee";
+
+// ====== EYE PATTERNS ======
+const shut      = [null,null,null,null,null,null,null,null];
+const leftShut  = [null,null,null,null,null,WHITE,BLUE,WHITE];
+const rightShut = [WHITE,BLUE,WHITE,null,null,null,null,null];
+
+const leftEye   = [BLUE,WHITE,WHITE,null,null,BLUE,WHITE,WHITE];
+const centerEye = [WHITE,BLUE,WHITE,null,null,WHITE,BLUE,WHITE];
+const rightEye  = [WHITE,WHITE,BLUE,null,null,WHITE,WHITE,BLUE];
+
+// ====== FRAMES ======
+const frames = [
+  { pattern: shut, vert:0, odds:20, duration:0.2, cap:500 },
+  { pattern: shut, vert:0, odds:1,  duration:2,   cap:1500 },
+
+  { pattern:leftEye,   vert:-1, odds:5, duration:2, cap:2500 },
+  { pattern:centerEye, vert:-1, odds:15, duration:2, cap:5000 },
+  { pattern:rightEye,  vert:-1, odds:5, duration:2, cap:2500 },
+
+  { pattern:leftEye,   vert:0, odds:15,   duration:3,  cap:5000 },
+  { pattern:centerEye, vert:0, odds:200, duration:10, cap:15000 },
+  { pattern:rightEye,  vert:0, odds:15,   duration:3, cap:5000 },
+
+  { pattern:leftEye,   vert:1, odds:5, duration:2, cap:2500 },
+  { pattern:centerEye, vert:1, odds:15, duration:2, cap:5000 },
+  { pattern:rightEye,  vert:1, odds:5, duration:2, cap:2500 },
+
+  { pattern:leftShut,  vert:0, odds:1, duration:1.5, cap:3000 },
+  { pattern:rightShut, vert:0, odds:1, duration:1.5, cap:3000 },
+];
+
+// ====== SEQUENCES ======
+const doubleShortBlink = [
+  { pattern: shut, vert:0, duration:0.2 },
+  { pattern: centerEye, vert:0, duration:0.2 },
+  { pattern: shut, vert:0, duration:0.2 },
+  { pattern: centerEye, vert:0, duration:0.5 },
+];
+
+const leftRightWinks = [
+  { pattern: leftShut, vert:0, duration:0.5 },
+  { pattern: centerEye, vert:0, duration:0.5 },
+  { pattern: rightShut, vert:0, duration:0.5 },
+  { pattern: centerEye, vert:0, duration:0.5 },
+];
+
+// ====== PREPARE FRAME CANVASES ======
+function prepareCanvas(pattern) {
+  const off = document.createElement("canvas");
+  off.width = 8*scale;
+  off.height = 1*scale;
+  const c = off.getContext("2d");
+  c.imageSmoothingEnabled = false;
+  pattern.forEach((color,i)=>{ if(color) c.fillStyle=color,c.fillRect(i*scale,0,scale,scale); });
+  return off;
+}
+
+frames.forEach(f => f.canvas = prepareCanvas(f.pattern));
+[...doubleShortBlink,...leftRightWinks].forEach(s => s.canvas = prepareCanvas(s.pattern));
+
+const pool = [
+  ...frames,
+  { type:"sequence", steps:doubleShortBlink, odds:10 },
+  { type:"sequence", steps:leftRightWinks, odds:0.1 }
+];
+
+// ====== WEIGHTED PICK ======
+function pickWeighted(){
+  const total = pool.reduce((s,e)=>s+(e.odds||0),0);
+  let r = Math.random()*total;
+  for(const e of pool){ r-=e.odds||0; if(r<=0) return e; }
+}
+
+// ====== ANIMATION STATE ======
+let currentEntry = pickWeighted();
+let stepIndex = 0;
+let stepStart = performance.now();
+let currentY = window.innerHeight/2 - scale/2;
+let targetY = currentY;
+
+// ====== RAF LOOP ======
+function animate(time){
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+
+  let drawCanvas;
+  let baseDuration;
+  let vert;
+
+  if(currentEntry.type==="sequence"){
+    const step = currentEntry.steps[stepIndex];
+    drawCanvas = step.canvas;
+    baseDuration = step.duration || 0.15;
+    vert = step.vert;
+  } else {
+    drawCanvas = currentEntry.canvas;
+    baseDuration = currentEntry.duration || 0.15;
+    vert = currentEntry.vert;
+  }
+
+  // randomize frame duration each time
+  const frameDur = Math.min(baseDuration * timescale * (0.5 + Math.random()*0.7), currentEntry.cap || 15000);
+
+  // randomize glide duration, bounded by frame duration
+  const glideDur = Math.min(glideTime * (0.5 + Math.random()*0.7), frameDur);
+  const targetPos = window.innerHeight/2 - scale/2 + vert*scale;
+  const glideFrac = Math.min(1, (time-stepStart)/glideDur);
+  currentY += (targetPos - currentY) * glideFrac;
+
+  canvas.style.top = `${currentY}px`;
+  ctx.drawImage(drawCanvas,0,0);
+
+  if(time - stepStart >= frameDur){
+    stepStart = time;
+    if(currentEntry.type==="sequence"){
+      stepIndex++;
+      if(stepIndex >= currentEntry.steps.length){
+        currentEntry = pickWeighted();
+        stepIndex=0;
+      }
+    } else {
+      currentEntry = pickWeighted();
+    }
+  }
+
+  requestAnimationFrame(animate);
+}
+
+requestAnimationFrame(animate);
+
+</script>
+</body>
+</html>
