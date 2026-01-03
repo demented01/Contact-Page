@@ -2,47 +2,143 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Official Contact</title>
+  <title>Demented10 Official Contact</title>
   <style>
-    body { 
-      font-family: Arial, sans-serif; 
-      text-align: center; 
-      padding: 50px; 
-      background-color: #000;  /* black background */
-      color: #fff;             /* white text */
+    /* Reset and base styles */
+    body, html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      font-family: Arial, sans-serif;
+      color: #fff;
+      background: url('starrypix.png') center/cover no-repeat fixed;
+      position: relative;
+      overflow-x: hidden;
+      text-align: center;
     }
-    .button { 
-      padding: 15px 25px; 
-      font-size: 18px; 
-      text-decoration: none; 
-      background: #1987ee;    /* your blue */
-      color: white; 
-      border-radius: 5px; 
-      display: inline-block;
-      margin-top: 20px;
+
+    /* Vignette overlay */
+    body::after {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: url('vignet.png') center/cover no-repeat;
+      pointer-events: none;
     }
-    .button:hover {
-      background: #1464bb;   /* slightly darker on hover */
+
+    /* Header with profile */
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 40px;
+      position: relative;
+      z-index: 1;
     }
-    .disclaimer { 
-      margin-top: 20px; 
-      font-size: 14px; 
-      color: #ccc;           /* light gray for disclaimer */
+
+    header img.profile {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      border: 2px solid #1987ee;
+      object-fit: cover;
+      margin-right: 20px;
     }
-    h1 {
-      margin-bottom: 20px;
+
+    header h1 {
+      font-size: 2em;
+      margin: 0;
     }
-    p {
+
+    /* Twitch Chat icon */
+    header img.twitch-icon {
+      width: 60px;
+      height: auto;
+      margin-left: 15px;
+    }
+
+    /* Main message */
+    main {
+      margin-top: 50px;
+      position: relative;
+      z-index: 1;
+    }
+
+    main p {
+      font-size: 1.2em;
+      max-width: 700px;
+      margin: 0 auto 30px auto;
       line-height: 1.5;
+    }
+
+    /* Button */
+    .button {
+      display: inline-block;
+      padding: 18px 35px;
+      font-size: 1.2em;
+      font-weight: bold;
+      color: #fff;
+      background: #1987ee;
+      border-radius: 10px;
+      text-decoration: none;
+      box-shadow: 0 5px 15px rgba(25, 135, 238, 0.4);
+      transition: all 0.2s ease-in-out;
+    }
+
+    .button:hover {
+      background: #1464bb;
+      box-shadow: 0 8px 20px rgba(20, 100, 187, 0.6);
+      transform: translateY(-2px);
+    }
+
+    .disclaimer {
+      margin-top: 25px;
+      font-size: 0.9em;
+      color: #aaa;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.4;
+    }
+
+    /* Animation iframe */
+    .animation-frame {
+      width: 100%;
+      max-width: 800px;
+      height: 200px; /* adjust as needed */
+      border: none;
+      margin: 40px auto;
+      display: block;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+      background: transparent;
+    }
+
+    @media (max-width: 768px) {
+      header { flex-direction: column; }
+      header img.profile { margin-bottom: 15px; margin-right: 0; }
+      main p { font-size: 1em; }
+      .animation-frame { height: 150px; }
     }
   </style>
 </head>
 <body>
-  <h1>Official Contact</h1>
-  <p>Before accessing our contact information, please complete a quick human verification step.</p>
-  <a class="button" href="YOUR_MONETIZED_SHORTLINK_HERE" target="_blank">Verify</a>
-  <p class="disclaimer">
-    This verification may involve viewing a short ad or completing a captcha.
-  </p>
+  <header>
+    <img class="profile" src="aswintered.jpg" alt="Profile">
+    <h1>demented10</h1>
+    <img class="twitch-icon" src="chat wide big tranps style.png" alt="Twitch Chat">
+  </header>
+
+  <main>
+    <p>Before accessing our contact information, please complete a quick human verification step.</p>
+    <a class="button" href="YOUR_MONETIZED_SHORTLINK_HERE" target="_blank">Verify</a>
+
+    <iframe class="animation-frame" src="EnderEyesBlueSmooth2.html" scrolling="no"></iframe>
+
+    <p class="disclaimer">
+      This verification may involve viewing a short ad or completing a captcha. Thank you for your patience!
+    </p>
+  </main>
 </body>
 </html>
