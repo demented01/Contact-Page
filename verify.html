@@ -13,7 +13,7 @@ html, body {
   font-family: Arial, sans-serif;
   color: #fff;
   overflow-x: hidden;
-  background: #000 url('https://raw.githubusercontent.com/demented01/Contact-Page/main/starrypix.png') center center / cover no-repeat fixed;
+  background: #000 url('starrypix.png') center center / cover no-repeat fixed;
 }
 
 /* ===== DYNAMIC TOP VIGNETTE ===== */
@@ -39,9 +39,9 @@ html, body {
   bottom: 0;
   left: 0;
   width: 100%;
-  height: 40vh; /* doubled height */
+  height: 40vh;
   pointer-events: none;
-  z-index: 20; 
+  z-index: 20;
   background: linear-gradient(to top,
     rgba(0,0,0,1) 0%,
     rgba(0,0,0,0.9) 20%,
@@ -81,9 +81,9 @@ header img.profile {
   width: 80px;
   height: 80px;
   border-radius: 50%;
-  border: 2px solid #1987ee; /* restored border */
+  border: 2px solid #1987ee;
   object-fit: cover;
-  object-position: 20% 25%; /* horizontal 20%, vertical keep top half */
+  object-position: 20% 25%;
 }
 
 /* ===== TWITCH CHAT ICON + LINK ===== */
@@ -97,8 +97,8 @@ header img.profile {
 }
 
 .chat-link img.twitch-icon {
-  width: 120px; /* twice as big */
-  border: none; /* removed border */
+  width: 120px;
+  border: none;
   border-radius: 12px;
   padding: 0;
 }
@@ -152,7 +152,7 @@ header img.profile {
   left: 0;
   width: 100%;
   height: 200px;
-  z-index: 40; /* above bottom vignette */
+  z-index: 40;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -195,16 +195,10 @@ header img.profile {
 <div class="backing">
 
   <header>
-    <img class="profile"
-         src="https://raw.githubusercontent.com/demented01/Contact-Page/main/aswintered.jpg"
-         alt="Profile">
-
+    <img class="profile" src="aswintered.jpg" alt="Profile">
     <h1>demented10</h1>
-
     <a class="chat-link" href="https://www.twitch.tv/popout/demented10/chat" target="_blank">
-      <img class="twitch-icon"
-           src="https://raw.githubusercontent.com/demented01/Contact-Page/main/chat%20wide%20big%20tranps%20style.png"
-           alt="Twitch Chat">
+      <img class="twitch-icon" src="chat_wide_big_transp_style.png" alt="Twitch Chat">
     </a>
   </header>
 
@@ -212,9 +206,7 @@ header img.profile {
     Before accessing our contact information, <span>please complete a quick human verification step.</span>
   </div>
 
-  <a class="button" href="YOUR_MONETIZED_SHORTLINK_HERE" target="_blank">
-    Verify
-  </a>
+  <a class="button" href="emailpage.html" target="_blank">Verify</a>
 
   <p class="disclaimer">
     This verification may involve viewing a short ad or completing a captcha. <span>Thank you for your patience!</span>
@@ -225,7 +217,7 @@ header img.profile {
 <!-- BOTTOM VIGNETTE -->
 <div class="vignette-bottom"></div>
 
-<!-- EYES ANIMATION FIXED ON TOP -->
+<!-- EYES ANIMATION -->
 <div class="eyes-container">
   <iframe class="animation-frame" src="EnderEyesBlueSmooth2.html" scrolling="no" loading="lazy"></iframe>
 </div>
