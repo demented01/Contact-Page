@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Official Contact</title>
+  <style>
+    body { font-family: Arial, sans-serif; text-align: center; padding: 50px; }
+    .button { padding: 15px 25px; font-size: 18px; text-decoration: none; background: #007bff; color: white; border-radius: 5px; }
+    .disclaimer { margin-top: 20px; font-size: 14px; color: gray; }
+  </style>
+</head>
+<body>
+  <h1>Official Contact</h1>
+  <p>Before accessing our contact information, please complete a quick human verification step.</p>
+  <a class="button" href="YOUR_MONETIZED_SHORTLINK_HERE" target="_blank">Verify</a>
+  <p class="disclaimer">
+    This verification may involve viewing a short ad or completing a captcha.
+  </p>
+</body>
+</html>
